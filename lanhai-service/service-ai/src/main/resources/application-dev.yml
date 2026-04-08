@@ -1,0 +1,31 @@
+server:
+  port: 8516
+
+spring:
+  application:
+    name: service-ai
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    url: jdbc:h2:mem:lanhai_ai;DB_CLOSE_DELAY=-1;MODE=MySQL
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+# Ollama 默认 http://localhost:11434 ，模型名需与本机 ollama pull 的模型一致
+lanhai:
+  ollama:
+    base-url: http://127.0.0.1:11434
+    model: llama3.2
+    connect-timeout-ms: 5000
+    read-timeout-ms: 120000
